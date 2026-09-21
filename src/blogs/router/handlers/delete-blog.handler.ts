@@ -4,7 +4,7 @@ import { HttpStatus } from "../../../core/types/http-statuses";
 import { createErrorMessages } from "../../../core/middlewares/validation/input-validation-result.middleware";
 
 export function deleteBlogHandler(req: Request<{ id: string }>, res: Response) {
-    const isDeleted = blogsRepository.delete(+req.params.id);
+    const isDeleted = blogsRepository.delete(req.params.id);
 
     if (!isDeleted) {
         res

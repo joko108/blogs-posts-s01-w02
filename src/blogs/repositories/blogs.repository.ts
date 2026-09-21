@@ -8,7 +8,7 @@ export const blogsRepository = {
     },
 
     // Возвращаем конкретный блог по id
-    findById(id: number): Blog | null {
+    findById(id: string): Blog | null {
         return db.blogs.find((b) => b.id === id) ?? null;
     },
 
@@ -16,8 +16,10 @@ export const blogsRepository = {
     create(newBlog: Omit<Blog, 'id'>): Blog {
         // id последнего блога
         const lastBlog = db.blogs[db.blogs.length - 1]
+        const nextId = lastBlog ? lastBlog.id + 1 : 1; // Генерируем id
+
         const created: Blog = {
-            id: lastBlog ? lastBlog.id + 1 : 1, // Генерируем id
+            id: String(nextId),
             ...newBlog,
         };
 
@@ -25,7 +27,7 @@ export const blogsRepository = {
         return created;
     },
 
-    update(id: number, blog: Omit<Blog, 'id'>): boolean {
+    update(id: string, blog: Omit<Blog, 'id'>): boolean {
         // Извлекаем id блога, который прислал клиент
         const index = db.blogs.findIndex((b) => b.id === id);
         if (index === -1) {
@@ -37,7 +39,7 @@ export const blogsRepository = {
         return true;
     },
 
-    delete(id: number): boolean {
+    delete(id: string): boolean {
         const index = db.blogs.findIndex((b) => b.id === id);
         if (index === -1) {
             return false;

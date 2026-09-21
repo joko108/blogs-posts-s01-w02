@@ -1,9 +1,9 @@
 // Модель поста
 export type Post = {
-    id: number,
+    id: string,
     title: string,
     shortDescription: string,
     content: string,
-    blogId: number,
+    blogId: string,
     blogName: string,
 };

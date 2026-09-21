@@ -4,7 +4,7 @@ import { HttpStatus } from "../../../core/types/http-statuses";
 import { createErrorMessages } from "../../../core/middlewares/validation/input-validation-result.middleware";
 
 export function getPostHandler(req: Request<{ id: string }>, res: Response) {
-    const post = postsRepository.findPostById(+req.params.id);
+    const post = postsRepository.findPostById(req.params.id);
 
     if (!post) {
         res

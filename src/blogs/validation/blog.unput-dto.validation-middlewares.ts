@@ -19,7 +19,9 @@ const websiteUrlValidation = body('websiteUrl')
     .withMessage('Website Url should be a string')
     .trim()
     .isLength({ min: 2, max: 500 })
-    .withMessage('Length of website Url is not correct');
+    .withMessage('Length of website Url is not correct')
+    .isURL()
+    .withMessage('Invalid format URL')
 
 export const blogInputDtoValidation = [
     nameValidation,

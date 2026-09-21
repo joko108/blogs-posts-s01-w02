@@ -1,4 +1,4 @@
-export const BLOGS_PATHS = '/api/blogs';
+export const BLOGS_PATHS = '/blogs';
 
 export const BLOGS_ROUTES = {
     ROOT: '',

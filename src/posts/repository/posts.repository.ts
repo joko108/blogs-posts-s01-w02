@@ -8,23 +8,26 @@ export const postsRepository = {
     },
 
     // Возвращаем конкретный блог по id
-    findPostById(id: number): Post | null {
+    findPostById(id: string): Post | null {
         return db.posts.find((b) => b.id === id) ?? null;
     },
 
     // Создание блога, без поля id (id генерируется здесь)
-    createPost(newPost: Omit<Post, 'id' | 'blogName'>): Post | null {
-        const blog = db.blogs.find(b => b.id === Number(newPost.blogId));
+    createPost(post: Omit<Post, 'id' | 'blogName'>): Post | null {
+        const blog = db.blogs.find(b => b.id === post.blogId);
 
-        if(!blog) {
-            return null;
+        // !!!!!!!!!!!!!
+        if(!blog) { // !!!!!!!!!
+            return null; // !!!!!!!!!!!!!
         }
 
         // id последнего блога
-        const lastPost = db.posts[db.posts.length - 1]
+        const lastPost = db.posts[db.posts.length - 1];
+        const nextId = lastPost ? lastPost.id + 1 : 1; // Генерируем id
+
         const created: Post = {
-            id: lastPost ? lastPost.id + 1 : 1, // Генерируем id
-            ...newPost,
+            id: String(nextId),
+            ...post,
             blogName: blog.name,
         };
 
@@ -32,7 +35,7 @@ export const postsRepository = {
         return created;
     },
 
-    updatePost(id: number, post: Omit<Post, 'id' | 'blogName'>): boolean {
+    updatePost(id: string, post: Omit<Post, 'id' | 'blogName'>): boolean {
         // Извлекаем id блога, который прислал клиент
         const index = db.posts.findIndex((b) => b.id === id);
         if (index === -1) {
@@ -44,7 +47,7 @@ export const postsRepository = {
         return true;
     },
 
-    deletePost(id: number): boolean {
+    deletePost(id: string): boolean {
         const index = db.posts.findIndex((b) => b.id === id);
         if (index === -1) {
             return false;

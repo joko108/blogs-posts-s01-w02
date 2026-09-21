@@ -8,7 +8,7 @@ export function updatePostHandler(
     req: Request<{ id: string }, {}, PostInputDto>,
     res: Response
 ) {
-    const isUpdated = postsRepository.updatePost(+req.params.id, req.body);
+    const isUpdated = postsRepository.updatePost(req.params.id, req.body);
 
     if (!isUpdated) {
         res
