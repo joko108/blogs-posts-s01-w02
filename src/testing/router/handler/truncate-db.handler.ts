@@ -4,5 +4,6 @@ import { HttpStatus } from "../../../core/types/http-statuses";
 
 export const truncateDbHandler = (req: Request, res: Response) => {
     db.blogs = [];
+    db.posts = [];
     res.sendStatus(HttpStatus.NoContent_204);
 };
