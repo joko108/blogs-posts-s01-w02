@@ -8,12 +8,11 @@ export function createPostHandler(
     req: Request<{}, {}, PostInputDto>,
     res: Response
 ) {
-    const newPost: Omit<Post, 'id'> = {
+    const newPost: Omit<Post, 'id' | 'blogName'> = {
         title: req.body.title,
         shortDescription: req.body.shortDescription,
         content: req.body.content,
         blogId: req.body.blogId,
-        blogName: req.body.blogName,
     };
 
     const createdPost = postsRepository.createPost(newPost);
