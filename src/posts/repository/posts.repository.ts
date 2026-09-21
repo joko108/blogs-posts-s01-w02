@@ -13,19 +13,26 @@ export const postsRepository = {
     },
 
     // Создание блога, без поля id (id генерируется здесь)
-    createPost(newPost: Omit<Post, 'id'>): Post {
+    createPost(newPost: Omit<Post, 'id' | 'blogName'>): Post | null {
+        const blog = db.blogs.find(b => b.id === Number(newPost.blogId));
+
+        if(!blog) {
+            return null;
+        }
+
         // id последнего блога
         const lastPost = db.posts[db.posts.length - 1]
         const created: Post = {
             id: lastPost ? lastPost.id + 1 : 1, // Генерируем id
             ...newPost,
+            blogName: blog.name,
         };
 
         db.posts.push(created);
         return created;
     },
 
-    updatePost(id: number, post: Omit<Post, 'id'>): boolean {
+    updatePost(id: number, post: Omit<Post, 'id' | 'blogName'>): boolean {
         // Извлекаем id блога, который прислал клиент
         const index = db.posts.findIndex((b) => b.id === id);
         if (index === -1) {
