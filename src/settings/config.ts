@@ -1,5 +1,6 @@
 const env = process.env;
 
+// Логин и пароль
 export const ADMIN_USERNAME = env.ADMIN_USERNAME || 'admin';
 export const ADMIN_PASSWORD = env.ADMIN_PASSWORD || 'qwerty';
 

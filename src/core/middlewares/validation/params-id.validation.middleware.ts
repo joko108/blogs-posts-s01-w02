@@ -1,5 +1,6 @@
 import { param } from "express-validator";
 
+// Отдельный валидатор ID
 export const idValidation = param('id')
     .exists()
     .withMessage('ID is required')

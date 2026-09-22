@@ -10,6 +10,7 @@ export const createErrorMessages = (
     return { errorsMessages: errors };
 };
 
+// Хелпер для мидлвара, приводящих ошибки к единому формату сообщения
 const formatErrors = (error: ValidationError): ValidationErrorType => {
     if (error.type === 'field') {
         return ({ message: error.msg, field: error.path });
@@ -18,6 +19,7 @@ const formatErrors = (error: ValidationError): ValidationErrorType => {
     return ({ message: error.msg, field: '' });
 }
 
+// Мидлвар, компонующий ошибки и отправляющий их в респонсе
 export const inputValidationResultMiddleware = (
     req: Request,
     res: Response,
@@ -25,7 +27,7 @@ export const inputValidationResultMiddleware = (
 ) => {
     const errors = validationResult(req)
         .formatWith(formatErrors)
-        .array({ onlyFirstError: true });
+        .array({ onlyFirstError: true }); // Если под одному полю несколько ошибок, уйдет только первая
 
     if (errors.length > 0) {
         res.status(HttpStatus.BadRequest_400).json({ errorsMessages: errors });

@@ -19,7 +19,7 @@ export const blogsRepository = {
         const nextId = lastBlog ? lastBlog.id + 1 : 1; // Генерируем id
 
         const created: Blog = {
-            id: String(nextId),
+            id: String(nextId), // Преобразовываем id в число
             ...newBlog,
         };
 

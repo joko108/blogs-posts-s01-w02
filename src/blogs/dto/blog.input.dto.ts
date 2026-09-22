@@ -1,4 +1,4 @@
-// Данные от клиента для создания/обновления блога
+// Данные от клиента на создание/обновление блога
 export type BlogInputDto = {
     name: string;
     description: string;

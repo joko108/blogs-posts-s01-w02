@@ -7,6 +7,7 @@ setupApp(app);
 
 const PORT = SETTINGS.PORT;
 
+// Запуск сервера
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`);
 });

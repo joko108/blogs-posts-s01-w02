@@ -3,9 +3,11 @@ import { postsRepository } from "../../repository/posts.repository";
 import { HttpStatus } from "../../../core/types/http-statuses";
 import { createErrorMessages } from "../../../core/middlewares/validation/input-validation-result.middleware";
 
+// Хендлер на вывод поста по ID, за БД не отвечает, только отправляет респонс клиенту
 export function getPostHandler(req: Request<{ id: string }>, res: Response) {
     const post = postsRepository.findPostById(req.params.id);
 
+    // Если из репозитория вернулось null, отправляем сообщение об ошибке
     if (!post) {
         res
             .status(HttpStatus.NotFound_404)

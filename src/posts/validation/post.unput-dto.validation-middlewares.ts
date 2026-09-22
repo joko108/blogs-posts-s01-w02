@@ -1,5 +1,6 @@
 import { body } from "express-validator";
 
+// Валидация поступающих от клиента полей (для POST и PUT запросов)
 const titleValidation = body('title')
     .isString()
     .withMessage('Title should be string')

@@ -12,6 +12,8 @@ import { blogInputDtoValidation } from "../validation/blog.unput-dto.validation-
 
 export const blogsRouter = Router({});
 
+// Хендлеры, направляющие реквест по необходимым мидлварам
+// Также, для POST, PUT и DELETE добавлена авторизация
 blogsRouter
     .get(BLOGS_ROUTES.ROOT, getBlogListHandler)
 
