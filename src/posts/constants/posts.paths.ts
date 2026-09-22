@@ -1,3 +1,4 @@
+// Эндпоинты для постов
 export const POSTS_PATHS = '/posts';
 
 export const POSTS_ROUTES = {

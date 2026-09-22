@@ -1,6 +1,7 @@
 import { Blog } from "../blogs/types/blog";
 import { Post } from "../posts/types/post";
 
+// ДБ с блогами и постами
 export const db = {
     blogs: <Blog[]>[
         {

@@ -14,7 +14,7 @@ export const postsRepository = {
 
     // Создание блога, без поля id (id генерируется здесь)
     createPost(post: Omit<Post, 'id' | 'blogName'>): Post | null {
-        const blog = db.blogs.find(b => b.id === post.blogId);
+        const blog = db.blogs.find(b => b.id === post.blogId); // Извлекаем ID блога
 
         // !!!!!!!!!!!!!
         if(!blog) { // !!!!!!!!!
@@ -28,7 +28,7 @@ export const postsRepository = {
         const created: Post = {
             id: String(nextId),
             ...post,
-            blogName: blog.name,
+            blogName: blog.name, // Добавляем наименование блога
         };
 
         db.posts.push(created);
@@ -36,7 +36,7 @@ export const postsRepository = {
     },
 
     updatePost(id: string, post: Omit<Post, 'id' | 'blogName'>): boolean {
-        // Извлекаем id блога, который прислал клиент
+        // Извлекаем id поста, который прислал клиент
         const index = db.posts.findIndex((b) => b.id === id);
         if (index === -1) {
             return false;
@@ -53,7 +53,7 @@ export const postsRepository = {
             return false;
         }
 
-        // Удаляем блог по его id
+        // Удаляем пост по его id
         db.posts.splice(index, 1);
         return true;
     },

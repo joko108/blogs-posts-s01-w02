@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { HttpStatus } from "../../core/types/http-statuses";
 import { ADMIN_PASSWORD, ADMIN_USERNAME } from "../../settings/config";
 
-
 export const superAdminGuardMiddleware = (req: Request, res: Response, next: NextFunction) => {
     // Извлекаем строку авторизации: 'Basic xxxx'
     const auth = req.headers['authorization'] as string;

@@ -1,3 +1,4 @@
+// Пути эднпоинтов
 export const BLOGS_PATHS = '/blogs';
 
 export const BLOGS_ROUTES = {
