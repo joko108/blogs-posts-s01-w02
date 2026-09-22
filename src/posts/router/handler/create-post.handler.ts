@@ -4,6 +4,11 @@ import { Post } from "../../types/post";
 import { HttpStatus } from "../../../core/types/http-statuses";
 import { postsRepository } from "../../repository/posts.repository";
 
+/*
+Контроллер на обновление, не знает, что происходит в БД,
+его задача: принять запрос, перенаправить в репозиторий,
+получить данные из репозитория, вернуть респонс.
+*/
 export function createPostHandler(
     req: Request<{}, {}, PostInputDto>,
     res: Response

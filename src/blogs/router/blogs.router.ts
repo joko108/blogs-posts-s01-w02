@@ -12,7 +12,7 @@ import { blogInputDtoValidation } from "../validation/blog.unput-dto.validation-
 
 export const blogsRouter = Router({});
 
-// Хендлеры, направляющие реквест по необходимым мидлварам
+// Роутер, направляющие реквест по необходимым мидлварам и хендлерам
 // Также, для POST, PUT и DELETE добавлена авторизация
 blogsRouter
     .get(BLOGS_ROUTES.ROOT, getBlogListHandler)

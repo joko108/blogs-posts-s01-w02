@@ -4,6 +4,11 @@ import { Blog } from "../../types/blog";
 import { HttpStatus } from "../../../core/types/http-statuses";
 import { blogsRepository } from "../../repositories/blogs.repository";
 
+/*
+Контроллер на обновление, не знает, что происходит в БД,
+его задача: принять запрос, перенаправить в репозиторий,
+получить данные из репозитория, вернуть респонс.
+*/
 export function createBlogHandler(
     req: Request<{}, {}, BlogInputDto>,
     res: Response

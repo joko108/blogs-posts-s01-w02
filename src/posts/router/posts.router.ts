@@ -12,6 +12,8 @@ import { postInputDtoValidation } from "../validation/post.unput-dto.validation-
 
 export const postsRouter = Router({});
 
+// Роутер, направляющие реквест по необходимым мидлварам и хендлерам
+// Также, для POST, PUT и DELETE добавлена авторизация
 postsRouter
     .get(POSTS_ROUTES.ROOT, getPostListHandler)
 
